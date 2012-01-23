@@ -1,0 +1,59 @@
+************************************************
+** This Install Guidance is only for NS2.34    *
+** Hasn't been tested in other version of NS2  *
+************************************************
+Suppoze $(NS) is the directory of your ns2
+
+----------------------------------------
+--STEP 1: Copy the Source Code	      --
+----------------------------------------
+Please copy P2P directory to $(NS)
+
+----------------------------------------
+--STEP 2: Set Default Parameters      --
+----------------------------------------
+plese run the following command
+sudo gedit $(NS)/tcl/lib/ns-default.tcl
+
+add the following lines to this file
+# ZetaProtocol
+Application/ZetaApp set packetSize_ 1000
+Application/ZetaApp set isDebug 0
+Agent/NSSocket set packetSize_ 1000
+Application/ZetaApp set tracker_threshold_ 3
+Application/ZetaApp set maxUploadSpeed_ 10kb
+Application/ZetaApp set isBootServer_ false
+Application/ZetaApp set updatePeersInterval_ 0.5
+Application/ZetaApp set codeWordSize_ 1
+Application/ZetaApp set blockSize_ 400
+Application/ZetaApp set dataSize_ 200000
+Application/ZetaApp set startSeederTh_ 0.5
+
+----------------------------------------
+--STEP 1: Add ZetaPacket Header	      --
+----------------------------------------
+please run the following command
+sudo gedit $(NS)/common/packet.h
+
+add the following line before line "static packet_t       PT_NTYPE"
+static const packet_t PT_ZETA = 62;
+
+add the following line before line  "name_[PT_NTYPE]= "undefined";"
+name_[PT_ZETA]= "Zeta";
+
+----------------------------------------
+--STEP 1: Compile NS2 Again	      --
+----------------------------------------
+open Makefile.in in $(ns)
+    sudo gedit $(NS)/Makefile.in
+
+add the following two lines:
+    	P2P/ZetaApp.o P2P/ZetaMsger.o P2P/ZetaPacket.o P2P/ZetaFileManager.o \
+	P2P/galois.o P2P/FiniteFieldCal.o  P2P/nssocket.o \
+before line "	@V_STLOBJ@"
+
+run the following common in directory $(NS)
+
+./configure
+make clean
+make

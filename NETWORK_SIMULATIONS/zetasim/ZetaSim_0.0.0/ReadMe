@@ -1,0 +1,71 @@
+
+	    	Zeta Simulation Suite for NS2 (ZetaSim)
+
+	    	   Jing Wang
+            Huazhong University of Science and Technology
+
+Copyright 2010 by Jing Wang
+
+This distribution contains codes of ZetaSim, a NS2 simualtion suite
+for Zeta Protocol Simualtion. In addition, some demos are provided,
+which can be found in ./P2P/demo
+More detail on most of the methods 
+can be found in the paper 
+Zeta: A Novel Network Coding Based P2P Downloading Protocol, Jing Wang.
+You can get the paper in directory ./P2P/doc
+
+This distribution consists of the following files:
+
+0. README 	This file
+
+1. ZetaSim	./P2P
+---Include File---
+   galois.h
+   TypeDefine.h
+   ExtendInfo.h
+   nssocket.h
+   P2PApp.h
+   P2PMsger.h
+   ZetaMsger.h
+   ZetaApp.h
+   ZetaPacket.h
+   FiniteFieldCal.h
+   ZetaFileManager.h
+
+---CPP file----
+   ZetaMsger.cc
+   nssocket.cc
+   ZetaApp.cc
+   ZetaPacket.cc
+   FiniteFieldCal.cc
+   ZetaFileManager.cc
+   galois.cc
+
+---Other Files----
+   INSTALL_GUIDANCE.txt // please read this file for how to install ZetaSim
+
+
+
+2. Documentation ./P2P/doc
+   Zeta: A Novel Network Coding Based P2P Downloading Protocol.pdf
+   Introduction of Zeta Protocol
+
+3  some demos  ./P2P/demo
+   please refer to ReadMe file in ./P2P/demo
+
+*************
+* ATTENTION!*
+*************
+Current Verion of ZetaSim is NOT a full implementation of Zeta Protcol.
+    1. It doesn't implement flow control
+    2. Boot Server Will always return itself as tracker.
+    3. Don't support generation. Files are directly cutted into blocks.
+All THESE PROBLEMS WILL BE SOLVED IN LATER VERSION.
+
+Since I am only a undergraduate student and Zeta Protocol is not a mature protocol. 
+I cannot ensure that there is no problem in Protocol Design or Simulation
+Suite Implementation. Be careful when you decide to use Zeta Protocol 
+or ZetaSim.
+
+
+
